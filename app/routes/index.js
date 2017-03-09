@@ -7,7 +7,7 @@ module.exports = () => {
   let routes = {
     'get': {
       // Endpoint to retrieve all products
-      '/api/v1/products': (req, res, next) => {
+      '/products': (req, res, next) => {
         db.productModel.find({}, function(error, products) {
           if (error) {
             // response error
@@ -21,7 +21,7 @@ module.exports = () => {
       },
 
       // Endpoint to retrieve one user by its id
-      '/api/v1/products/:id': (req, res, next) => {
+      '/products/:id': (req, res, next) => {
         db.productModel.findOne({_id: new mongodb.ObjectID(req.params.id)}, function(error, product) {
           if(error) {
             console.log('Error when searching for user, error: ', error);
@@ -35,7 +35,7 @@ module.exports = () => {
     },
     'post': {
       // Endpoint to create a new product
-      '/api/v1/products': (req, res, next) => {
+      '/products': (req, res, next) => {
         let newElvistekProduct = db.productModel({
           product_name: req.body.product_name,
           product_price: req.body.product_price,
@@ -52,7 +52,7 @@ module.exports = () => {
         });
       },
       // Endpoint which performs one buy and decrements the product stock quantity 
-      '/api/v1/products/:id/buy': (req, res, next) => {
+      '/products/:id/buy': (req, res, next) => {
         db.productModel.findByIdAndUpdate({ _id: new mongodb.ObjectID(req.params.id) }, 
         { 
           $inc: {
@@ -69,7 +69,7 @@ module.exports = () => {
         });
       },
       // Endpoint which performs one "like" to a specific product 
-      '/api/v1/products/:id/like': (req, res, next) => {
+      '/products/:id/like': (req, res, next) => {
         let newElvistekLike = db.likeModel({
           product_id: req.params.id,
           user_id: "temporary_user_test"
@@ -87,7 +87,7 @@ module.exports = () => {
     },
     'put': {
       // Endpoint to update a whole product
-      '/api/v1/products/:id': (req, res, next) => {
+      '/products/:id': (req, res, next) => {
         db.productModel.findByIdAndUpdate({_id: new mongodb.ObjectID(req.params.id)}, {
           product_name: req.body.product_name,
           product_price: req.body.product_price,
@@ -105,7 +105,7 @@ module.exports = () => {
     },
     'patch': {
       // Endpoint to update a whole product
-      '/api/v1/products/:id': (req, res, next) => {
+      '/products/:id': (req, res, next) => {
         db.productModel.findByIdAndUpdate({ _id: new mongodb.ObjectID(req.params.id) }, 
         {
           $set: {
@@ -124,7 +124,7 @@ module.exports = () => {
       }
     },
     'delete': {
-      '/api/v1/products/:id': (req, res, next) => {
+      '/products/:id': (req, res, next) => {
         db.productModel.findOneAndRemove({_id: new mongodb.ObjectID(req.params.id)}, function (error) {
           if(error) {
             console.log('Error when removing product, error: ', error);
@@ -135,7 +135,7 @@ module.exports = () => {
           }
         });
       },
-      '/api/v1/users/:id': (req, res, next) => {
+      '/users/:id': (req, res, next) => {
         db.userModel.findByIdAndRemove({_id: new mongodb.ObjectID(req.params.id)}, function (error) {
           if(error) {
             console.log('Error when removing user, error: ', error);
