@@ -2,7 +2,7 @@
   "name": "bookstore",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,7 @@
     "cookie-parser": "^1.4.3",
     "express": "*",
     "express-session": "^1.15.1",
+    "mongodb": "^2.2.24",
     "mongoose": "*",
     "nodemon": "*",
     "passport": "^0.3.2"

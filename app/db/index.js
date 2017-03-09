@@ -27,26 +27,17 @@ const elvisTekProducts = new Mongoose.Schema({
 
 // Create schema that defines the structure for storing likes data
 const elvisTekLikes = new Mongoose.Schema({
-  product_id: {
-    type: mongoose.Schema.ObjectID,
-    ref: userModel
-  },
-  user_id: {
-    type: mongoose.Schema.ObjectID,
-    ref: userModel
-  },
+  product_id: String,
+  user_id: String,
   like: {
-    type: Boolean,
-    default: false
+    type: Number,
+    default: 1
   }
 });
 
 // Create a Schema that defines the structure for storing buys data
 const elvisTekBuys = new Mongoose.Schema({
-  product_id: {
-    type: mongoose.Schema.ObjectID,
-    ref: userModel
-  },
+  product_id: String,
   buy_quantity: Number
 });
 
