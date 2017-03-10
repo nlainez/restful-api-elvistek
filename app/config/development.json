@@ -1,5 +1,0 @@
-{
-  "host": "http://localhost:3000",
-  "dbURI": "mongodb://norman_ets:123456@ds113670.mlab.com:13670/elvis_tek_store",
-  "sessionSecret": "applaudostudios"
-}
